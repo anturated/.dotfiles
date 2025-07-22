@@ -1,0 +1,31 @@
+[config.wallpaper]
+set = false
+command = 'hyprctl'
+argumants = ['hyprpaper', 'reload', 'eDP-1,{{image}}']
+
+[templates.fishy]
+input_path = './templates/fishy.json'
+output_path = '~/.config/fishy/colors.json'
+
+[templates.fish]
+input_path = './templates/fishy-theme.fish'
+output_path = '~/.config/fish/fishy-matugen.fish'
+post_hook = "fish ~/.config/fish/fishy-matugen.fish"
+
+[templates.kitty]
+input_path = './templates/kitty-theme.conf'
+output_path = '~/.config/kitty/current-theme.conf'
+post_hook = 'echo kitten'
+
+[templates.hyprland]
+input_path = './templates/hyprland.conf'
+output_path = '~/.config/hypr/hyprland.conf'
+
+[templates.hyprpaper]
+input_path = './templates/hyprpaper.conf'
+output_path = '~/.config/hypr/hyprpaper.conf'
+post_hook = 'hyprctl hyprpaper reload eDP-1,{{image}}'
+
+[templates.vesktop]
+input_path = './templates/discord.css'
+output_path = '~/.config/vesktop/themes/matugen.css'

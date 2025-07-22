@@ -19,7 +19,6 @@
     "editor.inlayHints.fontFamily": "'Monaspace Xenon'",
     "editor.inlineSuggest.fontFamily": "'Monaspace Krypton'",
     "debug.console.fontFamily": "'Monaspace Radon'",
-    "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "Catppuccin Frappé",
     "window.restoreWindows": "none",
     "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09', 'liga'",
@@ -108,4 +107,8 @@
     "workbench.iconTheme": "ayu",
     "terminal.integrated.fontLigatures.enabled": true,
     "terminal.integrated.localEchoStyle": "dim",
+    "qt-qml.qmlls.customExePath": "/usr/bin/qmlls6",
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    "todo-tree.general.showActivityBarBadge": true,
+    "window.autoDetectColorScheme": true,
 }
