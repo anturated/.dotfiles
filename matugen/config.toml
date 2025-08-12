@@ -57,7 +57,18 @@ output_path = '~/.config/qt6ct/colors/matugen-fishy.conf'
 [templates.spotify]
 input_path = './templates/spotify/Comfy/color.ini'
 output_path = '~/.config/spicetify/Themes/Comfy/color.ini'
-# post_hook = 'spicetify apply'
+# post_hook = 'spicetify apply' # run with spicetify watch -s or something like that
+
+[templates.cava]
+input_path = './templates/cava'
+output_path = '~/.config/cava/config'
+post_hook = 'killall -SIGUSR1 cava'
+
+[config]
+
+[templates.btop]
+input_path = './templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
 
 # [templates.zed]
 # input_path = './templates/zed-catppuccin.json'
