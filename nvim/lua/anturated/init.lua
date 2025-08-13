@@ -19,6 +19,6 @@ local yank_group = augroup("YankHL", {})
 -- })
 
 -- TODO: figure out if i need this
-vim.g.netrw_browse_split = 0  -- Open in the current window
-vim.g.netrw_banner = 0        -- Hide banner
-vim.g.netrw_winsize = 25      -- Set window size to 25%
+vim.g.netrw_browse_split = 0 -- Open in the current window
+vim.g.netrw_banner = 0       -- Hide banner
+vim.g.netrw_winsize = 25     -- Set window size to 25%

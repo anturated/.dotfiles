@@ -40,3 +40,20 @@ vim.opt.updatetime = 50
 
 -- highlight 80th col
 vim.opt.colorcolumn = "80"
+
+-- background
+--
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--
+
+-- vim.cmd.colorscheme("terafox")
+
+-- vim.cmd [[
+--   hi Normal guibg=NONE ctermbg=NONE
+--   hi NormalNC guibg=NONE ctermbg=NONE
+--   hi NvimTreeNormal guibg=NONE ctermbg=NONE
+--   hi TelescopeNormal guibg=NONE ctermbg=NONE
+--   hi Pmenu guibg=NONE ctermbg=NONE
+--   hi FloatBorder guibg=NONE ctermbg=NONE
+-- ]]

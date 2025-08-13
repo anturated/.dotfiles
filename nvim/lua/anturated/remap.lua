@@ -16,10 +16,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- black hole magic
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -33,4 +33,16 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+-- edit config
+vim.keymap.set("n", "<leader>fa", "<Cmd>Ex ~/.config/nvim/lua/anturated<CR>")
 
+-- split panels
+vim.keymap.set("n", "\\", "<Cmd>split<CR>")
+vim.keymap.set("n", "|", "<Cmd>vsplit<CR>")
+
+-- close buffer
+vim.keymap.set("n", "<leader>c", "<Cmd>bp<bar>sp<bar>bn<bar>bd<CR>")
+vim.keymap.set("n", "<leader>q", "<Cmd>q<CR>")
+
+-- format
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
