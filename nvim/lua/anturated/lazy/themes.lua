@@ -1,11 +1,13 @@
 function ColorMyPencils(color)
-	color = color or "terafox"
+	color = color or "kanagawa-paper-ink"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
+-- TODO: i have no idea how the above is supposed to work
+-- but it could be good
 
 return {
   {
@@ -32,4 +34,11 @@ return {
             ColorMyPencils();
         end
     },
+
+    {
+        "thesimonho/kanagawa-paper.nvim",
+        config = function()
+            ColorMyPencils();
+        end,
+    }
 }
