@@ -24,10 +24,10 @@ post_hook = "killall -SIGUSR1 kitty &"
 input_path = './templates/hyprland-colors.conf'
 output_path = '../hypr/components/colors.conf'
 
-[templates.hyprpaper]
-input_path = './templates/hyprpaper.conf'
-output_path = '../hypr/hyprpaper.conf'
-post_hook = 'hyprctl hyprpaper reload eDP-1,{{image}}'
+# [templates.hyprpaper]
+# input_path = './templates/hyprpaper.conf'
+# output_path = '../hypr/hyprpaper.conf'
+# post_hook = 'hyprctl hyprpaper reload eDP-1,{{image}}'
 
 [templates.vesktop]
 input_path = './templates/discord.css'
