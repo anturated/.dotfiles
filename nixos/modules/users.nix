@@ -6,15 +6,53 @@
     description = "Desant";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      vivaldi telegram-desktop vesktop
-      starship zoxide thefuck
-      yazi hyprshot btop lazygit fzf ripgrep gdu matugen gh ttyper kdePackages.kate
-      nodejs_24 rustup
-      killall eza bat fastfetch
-			brightnessctl playerctl bluetui pavucontrol
-			nautilus seahorse cava anytype
-			lenovo-legion
-			pinentry
+      # basic
+      vivaldi
+      telegram-desktop
+      vesktop
+
+      # gaming
+      bottles
+      atlauncher
+
+      # cli tools
+      starship
+      zoxide
+      thefuck
+      jq
+      yazi
+      btop
+      lazygit
+      fzf
+      ripgrep
+      gdu
+      gh
+      ttyper
+      killall
+      eza
+      bat
+      fastfetch
+      brightnessctl
+      playerctl
+      bluetui
+      cava
+
+      # code
+      nodejs_24
+      rustup
+
+      # util
+      pavucontrol
+      hyprshot
+      matugen
+      nautilus
+      seahorse
+      anytype
+      lenovo-legion
+      pinentry # required for gpg signing i think
+      baobab
+      kdePackages.kate
+      kdePackages.partitionmanager
     ];
     shell = pkgs.fish;
   };
