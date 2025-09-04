@@ -51,6 +51,8 @@
     variant = "";
   };
 
+  services.upower.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.desant = {
     isNormalUser = true;
@@ -59,9 +61,13 @@
     packages = with pkgs; [
       vivaldi telegram-desktop vesktop
       starship zoxide thefuck
-      yazi hyprshot btop lazygit fzf ripgrep  gdu
+      yazi hyprshot btop lazygit fzf ripgrep gdu matugen gh ttyper kdePackages.kate
       nodejs_24 rustup
       killall eza bat fastfetch
+			brightnessctl playerctl bluetui pavucontrol
+			nautilus seahorse cava
+			lenovo-legion
+			pinentry
     ];
     shell = pkgs.fish;
   };
@@ -71,7 +77,7 @@
     nerd-fonts.meslo-lg
     material-symbols
     monaspace
-    maple-mono.CN
+    maple-mono.NL-CN
     iosevka
   ];
 
@@ -81,6 +87,37 @@
   	dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   	localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 	};
+	programs.gamemode.enable = true;
+
+	services.spotifyd = {
+	  enable = true;
+	};
+
+	# services.blueman.enable = true;
+	hardware.bluetooth = {
+  	enable = true;
+  	powerOnBoot = true;
+  	settings = {
+    	General = {
+      	# Shows battery charge of connected devices on supported
+      	# Bluetooth adapters. Defaults to 'false'.
+      	Experimental = true;
+      	# When enabled other devices can connect faster to us, however
+      	# the tradeoff is increased power consumption. Defaults to
+      	# 'false'.
+      	FastConnectable = true;
+    	};
+    	Policy = {
+      	# Enable all controllers when they are found. This includes
+      	# adapters present on start as well as adapters that are plugged
+      	# in later on. Defaults to 'true'.
+      	AutoEnable = true;
+    	};
+  	};
+  };
+
+  hardware.xone.enable = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -100,20 +137,25 @@
     kdePackages.qtsvg
   ];
 
-services.xserver.enable = false;
-services.xserver.videoDrivers = ["nvidia"];
-hardware.nvidia.modesetting.enable = true;
-hardware.nvidia.open = false;
-programs.hyprland.enable = true;
-programs.fish.enable = true;
+  services.xserver.enable = false;
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.open = false;
+  programs.hyprland.enable = true;
+  programs.fish.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # TODO: do we even need this?
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    # pinentryFlavor = "gtk-2";
+    pinentryPackage = pkgs.pinentry-curses;
+  };
+
 
   # List services that you want to enable:
 
