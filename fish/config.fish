@@ -30,7 +30,6 @@ set --erase _asdf_shims
 
 alias dalarm="cd ~/Documents/projects/alarm && source bin/activate.fish && python main.py"
 alias yay="paru"
-alias anytype="~/Applications/Anytype.AppImage"
 
 starship init fish | source
 zoxide init fish | source
