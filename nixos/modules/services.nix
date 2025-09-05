@@ -3,14 +3,18 @@
 {
   services.upower.enable = true;
 
-	services.spotifyd = {
-	  enable = true;
-	};
-
-  # TODO: do we even need this?
+  # need this for gpg signing
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-qt;
   };
+
+  services.openvpn.servers = {
+    ukraineVPN = {
+      config = '' config /home/desant/Downloads/uaVPN.ovpn '';
+      autoStart = false;
+    }; 
+  };
+
+  services.gnome.gnome-keyring.enable = true;
 }

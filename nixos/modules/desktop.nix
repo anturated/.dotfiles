@@ -3,6 +3,7 @@
 {
   services.xserver.enable = false;
   services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.displayManager.gdm.enable = true;
 
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.open = false;

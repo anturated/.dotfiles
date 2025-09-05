@@ -47,12 +47,11 @@
       matugen
       nautilus
       seahorse
-      anytype
       lenovo-legion
       pinentry # required for gpg signing i think
       baobab
       kdePackages.kate
-      kdePackages.partitionmanager
+      appimage-run
     ];
     shell = pkgs.fish;
   };

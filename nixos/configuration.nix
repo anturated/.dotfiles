@@ -22,6 +22,7 @@
     kitty
     rofi
     git
+    lxqt.lxqt-policykit
     # this for quickshell
     kdePackages.qt5compat
     kdePackages.qtimageformats
@@ -48,9 +49,38 @@
     variant = "";
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "circle_hud";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "circle_hud" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
+
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   system.stateVersion = "25.05"; # DONT CHANGE
 
