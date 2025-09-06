@@ -10,6 +10,8 @@
       vivaldi
       telegram-desktop
       vesktop
+      spotify
+      spicetify-cli
 
       # gaming
       bottles
@@ -19,6 +21,7 @@
       starship
       zoxide
       thefuck
+      asdf-vm
       jq
       yazi
       btop
@@ -39,7 +42,9 @@
 
       # code
       nodejs_24
-      rustup
+      rustc
+      cargo
+      gcc
 
       # util
       pavucontrol
@@ -52,6 +57,7 @@
       baobab
       kdePackages.kate
       appimage-run
+      gnome-disk-utility
     ];
     shell = pkgs.fish;
   };
