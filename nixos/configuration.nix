@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -23,11 +23,6 @@
     rofi
     git
     lxqt.lxqt-policykit
-    # this for quickshell
-    kdePackages.qt5compat
-    kdePackages.qtimageformats
-    kdePackages.qtmultimedia
-    kdePackages.qtsvg
   ];
 
   time.timeZone = "Europe/Warsaw";
@@ -70,6 +65,7 @@
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
+      "video.use_native_backlight=1"
     ];
 
     # Hide the OS choice for bootloaders.

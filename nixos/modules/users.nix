@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.desant = {
@@ -11,7 +11,6 @@
       telegram-desktop
       vesktop
       spotify
-      spicetify-cli
 
       # gaming
       bottles
@@ -20,7 +19,6 @@
       # cli tools
       starship
       zoxide
-      thefuck
       asdf-vm
       jq
       yazi
@@ -30,7 +28,6 @@
       ripgrep
       gdu
       gh
-      ttyper
       killall
       eza
       bat
@@ -49,16 +46,28 @@
       # util
       pavucontrol
       hyprshot
+      hyprls
+      hyprsunset
       matugen
-      nautilus
-      seahorse
-      lenovo-legion
+      # lenovo-legion
       pinentry # required for gpg signing i think
-      baobab
       kdePackages.kate
       appimage-run
-      gnome-disk-utility
+      kdePackages.qtdeclarative # for qmlls
+      amberol # music player
+      nvtopPackages.full
+
+      # temp
+      mpd
+      mpc
+      ncmpcpp
+      ario
+
+      lshw
+      xorg.xrandr
     ];
     shell = pkgs.fish;
   };
+
+  programs.thunar.enable = true;
 }
