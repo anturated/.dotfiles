@@ -8,7 +8,7 @@
     ./modules/hardware.nix
     ./modules/services.nix
     ./modules/users.nix
-    ./modules/mpd.nix
+    # ./modules/mpd.nix
     # ./modules/prime.nix
     ./hardware-configuration.nix
   ];
@@ -26,6 +26,7 @@
     rofi
     git
     lxqt.lxqt-policykit
+    home-manager
   ];
 
   time.timeZone = "Europe/Warsaw";
