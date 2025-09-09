@@ -30,7 +30,10 @@ set --erase _asdf_shims
 
 alias dalarm="cd ~/Documents/projects/alarm && source bin/activate.fish && python main.py"
 alias yay="paru"
+alias vpnon="systemctl start openvpn-ukraineVPN.service"
+alias vpnoff="systemctl stop openvpn-ukraineVPN.service"
+alias refreshwifi="nmcli device wifi rescan"
 
 starship init fish | source
 zoxide init fish | source
-thefuck --alias | source
+# thefuck --alias | source
