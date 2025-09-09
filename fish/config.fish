@@ -33,6 +33,7 @@ alias yay="paru"
 alias vpnon="systemctl start openvpn-ukraineVPN.service"
 alias vpnoff="systemctl stop openvpn-ukraineVPN.service"
 alias refreshwifi="nmcli device wifi rescan"
+alias ff="fastfetch"
 
 starship init fish | source
 zoxide init fish | source
