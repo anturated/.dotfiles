@@ -49,22 +49,13 @@
       hyprls
       hyprsunset
       matugen
-      # lenovo-legion
+      lenovo-legion
       pinentry # required for gpg signing i think
       kdePackages.kate
       appimage-run
       kdePackages.qtdeclarative # for qmlls
       amberol # music player
       nvtopPackages.full
-
-      # temp
-      mpd
-      mpc
-      ncmpcpp
-      ario
-
-      lshw
-      xorg.xrandr
     ];
     shell = pkgs.fish;
   };

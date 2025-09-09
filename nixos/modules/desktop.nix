@@ -2,7 +2,7 @@
 
 {
   services.xserver.enable = false;
-  services.xserver.videoDrivers = ["nvidia" "amdgpu"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.displayManager.gdm.enable = true;
 
   hardware.nvidia.modesetting.enable = true;
@@ -11,11 +11,8 @@
   programs.fish.enable = true;
   programs.hyprland.enable = true;
 
+  # enable wayland support on electron and other stuff
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # for prime # TODO: doesnt work probably
-  environment.variables = {
-    WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:06:00.0-card";
-  };
 
 	programs.steam = {
   	enable = true;
@@ -24,6 +21,7 @@
   	localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 	};
 
+  # feral gamemode
 	programs.gamemode.enable = true;
 
   # TODO: doesnt work probably

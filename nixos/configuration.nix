@@ -8,10 +8,13 @@
     ./modules/hardware.nix
     ./modules/services.nix
     ./modules/users.nix
+    ./modules/mpd.nix
+    # ./modules/prime.nix
     ./hardware-configuration.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -65,7 +68,6 @@
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
-      "video.use_native_backlight=1"
     ];
 
     # Hide the OS choice for bootloaders.

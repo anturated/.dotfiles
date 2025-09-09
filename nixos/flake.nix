@@ -1,8 +1,9 @@
-            {
+{
+  description = "NixOS config flake thing";
+
   inputs = {
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     quickshell = {
@@ -11,8 +12,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, quickshell, nixos-hardware, ... }: {
-
+  outputs = { nixpkgs, quickshell, nixos-hardware, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       modules = [ 
         ./configuration.nix 
