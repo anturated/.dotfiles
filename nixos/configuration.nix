@@ -8,7 +8,6 @@
     ./modules/hardware.nix
     ./modules/services.nix
     ./modules/users.nix
-    # ./modules/mpd.nix
     # ./modules/prime.nix
     ./hardware-configuration.nix
   ];

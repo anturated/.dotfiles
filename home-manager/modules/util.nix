@@ -14,5 +14,6 @@
     pkgs.kdePackages.qtdeclarative # for qmlls
     pkgs.amberol # music player
     pkgs.nvtopPackages.full
+    pkgs.gnome-calculator
   ];
 }

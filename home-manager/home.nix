@@ -11,6 +11,7 @@
     ./modules/cli.nix
     ./modules/code.nix
     ./modules/util.nix
+    ./modules/mpd.nix
   ];
 
   home.stateVersion = "25.05";
