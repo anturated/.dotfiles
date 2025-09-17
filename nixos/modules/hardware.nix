@@ -25,6 +25,9 @@
 
     # sleep fix
     nvidia.powerManagement.enable = true;
+    nvidia.modesetting.enable = true;
+    nvidia.open = false;
+
 
   };
 }

@@ -5,9 +5,6 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.displayManager.gdm.enable = true;
 
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
-
   programs.fish.enable = true;
   programs.hyprland.enable = true;
 
@@ -27,4 +24,13 @@
   # TODO: doesnt work probably
 	qt.enable = true;
 	qt.platformTheme = "qt5ct";
+
+	  # To prevent getting stuck at shutdown
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=5s
+  '';
+
+  systemd.user.extraConfig = ''
+    DefaultTimeoutStopSec=5s
+  '';
 }
