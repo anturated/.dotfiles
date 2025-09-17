@@ -16,6 +16,7 @@ $python
 $nodejs
 $lua
 $package
+$nix_shell
 """
 
 palette = "fih"
@@ -121,6 +122,10 @@ symbol = " "
 
 [nix_shell]
 symbol = " "
+impure_msg = '[ $name](dimmed white)'
+pure_msg = '[ $name](bold blue)'
+unknown_msg = '[ $name (UNKNOWN)](bold red)'
+format = '$state'
 
 [nodejs]
 symbol = "󰎙 "
