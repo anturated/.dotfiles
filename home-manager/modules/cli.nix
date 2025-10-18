@@ -1,25 +1,33 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.starship
-    pkgs.zoxide
-    pkgs.asdf-vm
-    pkgs.jq
-    pkgs.yazi
-    pkgs.btop
-    pkgs.lazygit
-    pkgs.fzf
-    pkgs.ripgrep
-    pkgs.gdu
-    pkgs.gh
-    pkgs.killall
-    pkgs.eza
-    pkgs.bat
-    pkgs.fastfetch
-    pkgs.brightnessctl
-    pkgs.playerctl
-    pkgs.bluetui
-    pkgs.cava
+  home.packages = with pkgs; [
+    # tools
+    starship
+    zoxide
+    asdf-vm
+    jq
+    fzf
+    ripgrep
+    gh
+    killall
+    zip
+    unzip
+    wl-clipboard
+    xclip
+
+    # actual software
+    yazi
+    btop
+    nvtopPackages.full
+    lazygit
+    gdu
+    eza
+    bat
+    fastfetch
+    brightnessctl
+    playerctl
+    bluetui
+    cava
   ];
 }

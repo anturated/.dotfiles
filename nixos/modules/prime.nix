@@ -1,59 +1,93 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
+  # NOTE:
+  # right now if you fully offload (i think)
+  # hyprland via some of the env vars commented
+  # nvidia gpu, which it can't. and thus
+  # it doesnt render. but works. but i can't see it
+  # maybe when we figure that out the dGPU will
+  # actually power down.
 
-  # enable prime offload on the gpu
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true;
+  config = {
 
-    amdgpuBusId = "PCI:6:0:0";
-    nvidiaBusId = "PCI:1:0:0";
+    # enable prime offload on the gpu
+    hardware.nvidia.prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      sync.enable = false;
+
+      amdgpuBusId = "PCI:6:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # NOTE: didnt try might help
+    # hardware.nvidia.powerManagement.finegrained = true;
+
+    # hardware acceleration stuff
+    hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
+
+    # brightness fix kinda
+    boot.kernelParams = [
+      "video.use_native_backlight=1"
+    ];
+
+    # iGPU drivers
+    services.xserver.videoDrivers = [ "modesetting" "amdgpu" ];
+
+    my.gpuProfile = "amd";
+
+    environment.variables = {
+      # __GLX_VENDOR_LIBRARY_NAME = "mesa";
+
+      # Only AMD/Intel Vulkan ICD visible by default
+      # VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
+      # VK_LAYER_PATH = "${pkgs.mesa.drivers}/share/vulkan/explicit_layer.d";
+
+      # LIBVA_DRIVER_NAME = "radeonsi";
+      # VDPAU_DRIVER = "va_gl";
+    };
+
+    # supposedly fixes pre-ampere D3 state
+    # boot.extraModprobeConfig = ''
+    #   options nvidia NVreg_EnableGpuFirmware=0
+    # '';
+
+
+    # this is supposed to make hyprland start on the iGPU
+    # environment.variables = {
+    #   __EGL_VENDOR_LIBRARY_FILENAMES="/usr/share/glvnd/egl_vendor.d/50_mesa.json";
+    #   __GLX_VENDOR_LIBRARY_NAME="mesa";
+    # };
+
+    # NOTE: this doesnt really help i dont think
+    services.udev.extraRules = ''
+      # Rule to force GDM to use the integrated AMD GPU.
+      # It identifies the AMD card by its vendor ID and sets it as primary.
+      # SUBSYSTEM=="drm", KERNEL=="card*", ATTRS{vendor}=="0x1002", ENV{GDM_PRIMARY_GPU}="1"
+
+      # FROM ARCHWIKI
+      # Enable runtime PM for NVIDIA VGA/3D controller devices on driver bind
+      ACTION=="bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="auto"
+      ACTION=="bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="auto"
+
+      # Disable runtime PM for NVIDIA VGA/3D controller devices on driver unbind
+      ACTION=="unbind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="on"
+      ACTION=="unbind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="on"
+
+      # Enable runtime PM for NVIDIA VGA/3D controller devices on adding device
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="auto"
+      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="auto"
+    '';
+
+    environment.systemPackages = with pkgs; [
+      mesa
+    ];
   };
 
-  # NOTE: didnt try might help
-  #
-  # hardware.nvidia.powerManagement.finegrained = true;
-
-  # hardware acceleration stuff
-  graphics.enable = true;
-  graphics.enable32Bit = true;
-
-  # brightness fix kinda
-  boot.kernelParams = [
-    "video.use_native_backlight=1"
-  ];
-
-  # iGPU drivers
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # this is supposed to make hyprland start on the iGPU
-  environment.variables = {
-    WLR_DRM_DEVICES = "/dev/dri/by-path/pci-0000:06:00.0-card";
-  };
-  services.udev.extraRules = ''
-    # Rule to force GDM to use the integrated AMD GPU.
-    # It identifies the AMD card by its vendor ID and sets it as primary.
-    SUBSYSTEM=="drm", KERNEL=="card*", ATTRS{vendor}=="0x1002", ENV{GDM_PRIMARY_GPU}="1"
-
-    # FROM ARCHWIKI
-    # Enable runtime PM for NVIDIA VGA/3D controller devices on driver bind
-    ACTION=="bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="auto"
-    ACTION=="bind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="auto"
-
-    # Disable runtime PM for NVIDIA VGA/3D controller devices on driver unbind
-    ACTION=="unbind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="on"
-    ACTION=="unbind", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="on"
-
-    # Enable runtime PM for NVIDIA VGA/3D controller devices on adding device
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030000", TEST=="power/control", ATTR{power/control}="auto"
-    ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x030200", TEST=="power/control", ATTR{power/control}="auto"
-  '';
-
-  users.users.desant.packages = with pkgs; [
-    lshw
-    xorg.xrandr
-    # mesa-demos
-  ];
+  # users.users.desant.packages = with pkgs; [ ];
 
 }

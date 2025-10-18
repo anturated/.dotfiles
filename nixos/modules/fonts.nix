@@ -6,7 +6,7 @@
     nerd-fonts.meslo-lg
     material-symbols
     monaspace
-    maple-mono.NL-CN
+    maple-mono.CN
     iosevka
   ];
 }

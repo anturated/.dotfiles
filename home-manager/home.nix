@@ -11,7 +11,9 @@
     ./modules/cli.nix
     ./modules/code.nix
     ./modules/util.nix
+    ./modules/gaming.nix
     ./modules/mpd.nix
+    ./modules/spotify.nix
   ];
 
   home.stateVersion = "25.05";

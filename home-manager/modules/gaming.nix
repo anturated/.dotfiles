@@ -1,8 +1,21 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
-    pkgs.bottles
-    pkgs.atlauncher
+  home.packages = with pkgs; [
+    bottles
+    # pkgs.atlauncher
+    # pkgs.jdk8
+    (prismlauncher.override {
+        # Add binary required by some mod
+        additionalPrograms = [ ffmpeg ];
+
+        # Change Java runtimes available to Prism Launcher
+        jdks = [
+          graalvm-ce
+          zulu8
+          zulu17
+          zulu
+        ];
+      })
   ];
 }

@@ -8,7 +8,8 @@
     ./modules/hardware.nix
     ./modules/services.nix
     ./modules/users.nix
-    # ./modules/prime.nix
+    ./modules/prime.nix
+    ./modules/spicetify-comfy.nix
     ./hardware-configuration.nix
   ];
 
@@ -69,6 +70,8 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
+
+    supportedFilesystems = ["ntfs"];
 
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
