@@ -1,0 +1,11 @@
+### TODO:
+- [ ] statusline (heirline?)
+- [ ] buffer line 
+- [ ] autopairs
+- [ ] indent guides
+- [ ] mason config
+- [ ] lsp
+- [ ] treesitter
+- [ ] dap?
+- [ ] lazygit thing
+- [ ] 

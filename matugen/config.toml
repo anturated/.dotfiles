@@ -1,0 +1,210 @@
+[config.wallpaper]
+set = false
+command = 'hyprctl'
+argumants = ['hyprpaper', 'reload', 'eDP-1,{{image}}']
+
+[templates.fishy]
+input_path = './templates/fishy.json'
+output_path = '~/.config/fishy/colors.json'
+
+[templates.fish]
+input_path = './templates/fishy-theme.fish'
+output_path = '~/.config/fish/fishy-matugen.fish'
+post_hook = "fish ~/.config/fish/fishy-matugen.fish"
+
+[templates.kitty]
+input_path = './templates/kitty-axenide.conf'
+# input_path = './templates/kitty-theme.conf'
+output_path = '~/.config/kitty/current-theme.conf'
+# post_hook = 'kitty @ --to unix:/tmp/kitty-socket set-colors -a -c ~/.config/kitty/current-theme.conf'
+post_hook = "killall -SIGUSR1 .kitty-wrapped &"
+# post_hook = 'echo asd'
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '../hypr/components/colors.conf'
+
+# [templates.hyprpaper]
+# input_path = './templates/hyprpaper.conf'
+# output_path = '../hypr/hyprpaper.conf'
+# post_hook = 'hyprctl hyprpaper reload eDP-1,{{image}}'
+
+[templates.vesktop]
+input_path = './templates/discord.css'
+output_path = '~/.config/vesktop/themes/matugen.css'
+
+[templates.yaze]
+input_path = './templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.gtk3]
+input_path = './templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark'
+
+[templates.gtk4]
+input_path = './templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.qt5ct]
+input_path = './templates/qtxct.conf'
+output_path = '~/.config/qt5ct/colors/matugen-fishy.conf'
+
+[templates.qt6ct]
+input_path = './templates/qtxct.conf'
+output_path = '~/.config/qt6ct/colors/matugen-fishy.conf'
+
+[templates.spotify]
+# input_path = './templates/spotify/Comfy/color.ini'
+# output_path = '~/.config/spicetify/Themes/Comfy/color.ini'
+input_path = './templates/spicetify-comfy.nix'
+output_path = '../nixos/modules/spicetify-comfy.nix'
+
+[templates.cava]
+input_path = './templates/cava'
+output_path = '~/.config/cava/config'
+post_hook = 'killall -SIGUSR1 cava'
+
+[config]
+
+[templates.btop]
+input_path = './templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+# [templates.zed]
+# input_path = './templates/zed-catppuccin.json'
+# output_path = '~/.config/zed/themes/fishy.json'
+
+# stolen from axenide
+[config.custom_colors.red]
+color = "#FF0000"
+blend = true
+
+[config.custom_colors.green]
+color = "#00FF00"
+blend = true
+
+[config.custom_colors.yellow]
+color = "#FFFF00"
+blend = true
+
+[config.custom_colors.blue]
+color = "#0000FF"
+blend = true
+
+[config.custom_colors.magenta]
+color = "#FF00FF"
+blend = true
+
+[config.custom_colors.cyan]
+color = "#00FFFF"
+blend = true
+
+[config.custom_colors.white]
+color = "#FFFFFF"
+blend = true
+
+# catppuccin >:)
+[config.custom_colors.Rosewater]
+color = "#f5e0dc"
+blend = true
+
+[config.custom_colors.Flamingo]
+color = "#f2cdcd"
+blend = true
+
+[config.custom_colors.Pink]
+color = "#f5c2e7"
+blend = true
+
+[config.custom_colors.Mauve]
+color = "#cba6f7"
+blend = true
+
+[config.custom_colors.Red]
+color = "#f38ba8"
+blend = true
+
+[config.custom_colors.Maroon]
+color = "#eba0ac"
+blend = true
+
+[config.custom_colors.Peach]
+color = "#fab387"
+blend = true
+
+[config.custom_colors.Yellow]
+color = "#f9e2af"
+blend = true
+
+[config.custom_colors.Green]
+color = "#a6e3a1"
+blend = true
+
+[config.custom_colors.Teal]
+color = "#94e2d5"
+blend = true
+
+[config.custom_colors.Sky]
+color = "#89dceb"
+blend = true
+
+[config.custom_colors.Sapphire]
+color = "#74c7ec"
+blend = true
+
+[config.custom_colors.Blue]
+color = "#89b4fa"
+blend = true
+
+[config.custom_colors.Lavender]
+color = "#b4befe"
+blend = true
+
+[config.custom_colors.Text]
+color = "#cdd6f4"
+blend = true
+
+[config.custom_colors.Subtext1]
+color = "#bac2de"
+blend = true
+
+[config.custom_colors.Subtext0]
+color = "#a6adc8"
+blend = true
+
+[config.custom_colors.Overlay2]
+color = "#9399b2"
+blend = true
+
+[config.custom_colors.Overlay1]
+color = "#7f849c"
+blend = true
+
+[config.custom_colors.Overlay0]
+color = "#6c7086"
+blend = true
+
+[config.custom_colors.Surface2]
+color = "#585b70"
+blend = true
+
+[config.custom_colors.Surface1]
+color = "#45475a"
+blend = true
+
+[config.custom_colors.Surface0]
+color = "#313244"
+blend = true
+
+[config.custom_colors.Base]
+color = "#1e1e2e"
+blend = true
+
+[config.custom_colors.Mantle]
+color = "#181825"
+blend = true
+
+[config.custom_colors.Crust]
+color = "#11111b"
+blend = true
