@@ -30,10 +30,10 @@
     };
 
 
-  fileSystems."/run/media/desant/new-home" =
-    { device = "/dev/disk/by-uuid/9d7f88a9-0762-4dd2-8bd3-996de2cc46a5";
-      fsType = "ext4";
-    };
+  # fileSystems."/run/media/desant/new-home" =
+  #   { device = "/dev/disk/by-uuid/9d7f88a9-0762-4dd2-8bd3-996de2cc46a5";
+  #     fsType = "ext4";
+  #   };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/dcf69b49-0c8b-41d9-9d75-a4907ff97633";

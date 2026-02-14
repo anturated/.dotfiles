@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     bottles
     # pkgs.atlauncher
+    ftb-app
     # pkgs.jdk8
     (prismlauncher.override {
         # Add binary required by some mod
@@ -11,7 +12,8 @@
 
         # Change Java runtimes available to Prism Launcher
         jdks = [
-          graalvm-ce
+          # graalvm-ce
+          graalvmPackages.graalvm-ce
           zulu8
           zulu17
           zulu

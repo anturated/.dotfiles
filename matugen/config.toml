@@ -17,7 +17,7 @@ input_path = './templates/kitty-axenide.conf'
 # input_path = './templates/kitty-theme.conf'
 output_path = '~/.config/kitty/current-theme.conf'
 # post_hook = 'kitty @ --to unix:/tmp/kitty-socket set-colors -a -c ~/.config/kitty/current-theme.conf'
-post_hook = "killall -SIGUSR1 kitty &"
+post_hook = "killall -SIGUSR1 .kitty-wrapped &"
 # post_hook = 'echo asd'
 
 [templates.hyprland]
@@ -55,9 +55,10 @@ input_path = './templates/qtxct.conf'
 output_path = '~/.config/qt6ct/colors/matugen-fishy.conf'
 
 [templates.spotify]
-input_path = './templates/spotify/Comfy/color.ini'
-output_path = '~/.config/spicetify/Themes/Comfy/color.ini'
-# post_hook = 'spicetify apply' # run with spicetify watch -s or something like that
+# input_path = './templates/spotify/Comfy/color.ini'
+# output_path = '~/.config/spicetify/Themes/Comfy/color.ini'
+input_path = './templates/spicetify-comfy.nix'
+output_path = '../nixos/modules/spicetify-comfy.nix'
 
 [templates.cava]
 input_path = './templates/cava'

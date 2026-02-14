@@ -2,6 +2,7 @@
 
 {
   hardware = {
+    enableAllFirmware = true;
 
 	  bluetooth = {
   	  enable = true;
@@ -12,6 +13,7 @@
       	  Experimental = true;
       	  # Faster connect, more power drain
       	  FastConnectable = true;
+          DisableAbsoluteVolume = true;
     	  };
     	  Policy = {
       	  # Enable all controllers when they are found.
@@ -28,6 +30,6 @@
     nvidia.modesetting.enable = true;
     nvidia.open = false;
 
-
+    steam-hardware.enable = true;
   };
 }

@@ -7,10 +7,11 @@
     hyprls
     hyprsunset
     matugen
+    quickshell
 
     # obscure stuff i don't know much about
     lenovo-legion
-    pinentry # required for gpg signing i think
+    # pinentry # required for gpg signing i think
     kdePackages.qtdeclarative # for qmlls
     gnome-disk-utility
 
@@ -23,18 +24,19 @@
 
     # for prime testing
     kdePackages.kate
-    lshw
-    mesa-demos
     kdePackages.ark
 
     # video
     vlc
     gpu-screen-recorder-gtk
     gpu-screen-recorder
-    obs-studio
     losslesscut-bin
-    # 
+
+    okteta
+
+    usbutils
+    xdg-desktop-portal-hyprland
   ];
 
-  services.kdeconnect.enable=true;
+  # services.kdeconnect.enable=true;
 }

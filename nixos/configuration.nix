@@ -81,6 +81,10 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
+
+    kernelModules = [
+      "uinput"
+    ];
   };
 
   system.stateVersion = "25.05"; # DONT CHANGE

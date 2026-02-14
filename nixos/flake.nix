@@ -3,25 +3,25 @@
 
   inputs = {
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ambxst = {
+    #   url = "github:Axenide/Ambxst";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { nixpkgs, quickshell, nixos-hardware, spicetify-nix, ... }: {
+  outputs = { nixpkgs, nixos-hardware, spicetify-nix, ... }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+
       modules = [ 
         ./configuration.nix 
 
-        {
-          environment.systemPackages = [ quickshell.packages.x86_64-linux.default ];
-        }
+        # {
+        #   environment.systemPackages = [ ambxst.packages.x86_64-linux.default ];
+        # }
 
         nixos-hardware.nixosModules.lenovo-legion-15arh05h
         spicetify-nix.nixosModules.default

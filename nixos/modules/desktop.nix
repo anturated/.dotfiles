@@ -11,7 +11,8 @@
   config = {
     services.xserver.enable = false;
     services.xserver.videoDrivers = [ "nvidia" ];
-    services.xserver.displayManager.gdm.enable = true;
+    # services.xserver.displayManager.gdm.enable = true;
+    services.displayManager.gdm.enable=true;
 
     programs.fish.enable = true;
     programs.hyprland.enable = true;
@@ -33,8 +34,8 @@
       __GLX_VENDOR_LIBRARY_NAME = "mesa";
 
       # Only AMD/Intel Vulkan ICD visible by default
-      VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
-      VK_LAYER_PATH = "${pkgs.mesa.drivers}/share/vulkan/explicit_layer.d";
+      VK_ICD_FILENAMES = "${pkgs.mesa}/share/vulkan/icd.d/radeon_icd.x86_64.json";
+      VK_LAYER_PATH = "${pkgs.mesa}/share/vulkan/explicit_layer.d";
 
 
       # this is supposed to make hyprland start on the iGPU

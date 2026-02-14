@@ -1,15 +1,14 @@
-
 { pkgs, ... }:
 
 {
   home.packages = with pkgs; [
-    nodejs_24
-    rustc
-    cargo
-    gcc
-    python3
-
-    omnisharp-roslyn
+    # nodejs_24
+    # rustc
+    # cargo
+    # gcc
+    # python3
+    #
+    # omnisharp-roslyn
   ];
 
   programs.vscode = {
