@@ -65,16 +65,23 @@ input_path = './templates/cava'
 output_path = '~/.config/cava/config'
 post_hook = 'killall -SIGUSR1 cava'
 
-[config]
-
 [templates.btop]
 input_path = './templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.wofi]
+input_path = './templates/wofi-colors.css'
+output_path = '~/.config/wofi/colors.css'
+
+[templates.rofi]
+input_path = './templates/rofi.rasi'
+output_path = '~/.config/rofi/colors.rasi'
 
 # [templates.zed]
 # input_path = './templates/zed-catppuccin.json'
 # output_path = '~/.config/zed/themes/fishy.json'
 
+[config]
 # stolen from axenide
 [config.custom_colors.red]
 color = "#FF0000"

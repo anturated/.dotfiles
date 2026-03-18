@@ -16,6 +16,7 @@
 
     programs.fish.enable = true;
     programs.hyprland.enable = true;
+    programs.waybar.enable = true;
 
     # enable wayland support on electron and other stuff
     environment.sessionVariables.NIXOS_OZONE_WL = "1";

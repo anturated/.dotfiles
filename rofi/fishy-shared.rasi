@@ -1,5 +1,6 @@
+@import "colors.rasi"
+
 configuration {
-  modi: "window,run,drun";
   font: "Iosevka 12";
   border: 2px;
   border-radius: 13px;
@@ -8,15 +9,14 @@ configuration {
 }
 
 * {
+  borders-outer: 13px;
+  borders-inner: 8px;
 }
 
-@import "colors.rasi"
-
 window { // ???
-  width: 500px;
-  background-color: @background-br;
+  background-color: @background;
   border: 2px solid;
-  border-color: @borders;
+  border-color: @primary;
   border-radius: @borders-outer;
 }
 
@@ -37,22 +37,11 @@ inputbar { // container for search and drun
 prompt { // thing that says drun
   text: ">";
   padding: 6px;
-  text-color: @foreground;
+  text-color: @on-background;
   background-color: transparent;
-}
-
-entry { // search bar
-  expand: true;
-  padding: 6px;
-  background-color: transparent;
-  color: @foreground;
-  placeholder: "Search";
-  placeholder-color: @comment;
 }
 
 listview { // list container
-  lines: 4;
-  columns: 1;
   spacing: 4px;
   fixed-height: false;
   scrollbar: false;
@@ -60,21 +49,30 @@ listview { // list container
   border-radius: @borders-inner;
 }
 
+entry { // search bar
+  expand: true;
+  padding: 6px;
+  background-color: transparent;
+  color: @on-background;
+  placeholder-color: @outline;
+}
+
 element { // option container (outline)
   padding: 6px;
   border-radius: 8px;
   background-color: transparent;
-  text-color: @foreground;
+  text-color: @on-background;
   icon-size: 1.2em;
 }
 
 element selected {
-  background-color: @selected;
-  text-color: @foreground-blue;
+  background-color: @primary;
+  text-color: @on-primary;
 }
 
 element-text {
   background-color: transparent;
+  text-color: inherit;
 }
 
 element-icon {
@@ -82,8 +80,3 @@ element-icon {
   padding: 0px 8px 0px 0px;
   background-color: transparent;
 }
-
-element-text {
-  text-color: inherit;
-}
-

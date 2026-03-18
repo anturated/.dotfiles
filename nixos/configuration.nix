@@ -24,6 +24,7 @@
     neovim
     kitty
     rofi
+    wofi
     git
     lxqt.lxqt-policykit
     home-manager

@@ -21,6 +21,8 @@
     gnome-calculator
     nautilus
     feh
+    eog
+    piper
 
     # for prime testing
     kdePackages.kate
@@ -38,5 +40,4 @@
     xdg-desktop-portal-hyprland
   ];
 
-  # services.kdeconnect.enable=true;
 }

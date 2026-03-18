@@ -1,0 +1,13 @@
+## Geometry
+mode=drun
+width=500px
+layer=overlay
+orientation=vertical
+
+## Images
+allow_markup=ti
+allow_images=true
+image_size=30
+
+matching=fuzzy
+# Other
