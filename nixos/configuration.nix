@@ -84,6 +84,7 @@
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
 
+    kernelModules = [ "ntsync" ];
     initrd.kernelModules = [
       "nvidia"
       "nvidia_modeset"
