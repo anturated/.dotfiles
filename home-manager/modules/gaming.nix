@@ -3,9 +3,8 @@
 {
   home.packages = with pkgs; [
     bottles
-    # pkgs.atlauncher
     ftb-app
-    # pkgs.jdk8
+    sc-controller
     (prismlauncher.override {
         # Add binary required by some mod
         additionalPrograms = [ ffmpeg ];

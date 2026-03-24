@@ -10,15 +10,9 @@
     pinentryPackage = pkgs.pinentry-qt;
   };
 
-  services.openvpn.servers = {
-    ukraineVPN = {
-      config = '' config /home/desant/Downloads/uaVPN.ovpn '';
-      autoStart = false;
-    }; 
-  };
-
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   programs.nix-ld.enable = true;
 

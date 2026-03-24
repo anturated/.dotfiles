@@ -1,4 +1,4 @@
-{ pkgs, spicetifyPkgs, ... }:
+{ pkgs, spicetifyPkgs, lib, ... }:
 
 {
   users.users.desant = {
@@ -9,21 +9,12 @@
   };
 
   # docker stuff
-  virtualisation.docker = {
-    enable = true;
-  };
+  virtualisation.docker.enable = true;
+  systemd.services.docker.wantedBy = lib.mkForce []; # Don't start on boot
+  systemd.sockets.docker.wantedBy = [ "sockets.target" ]; # Start the socket instead
 
   programs.spicetify = {
     enable = true;
-    enabledExtensions = with spicetifyPkgs.extensions; [
-      keyboardShortcut
-    ];
-
-    theme = spicetifyPkgs.themes.comfy ;
+    # theme = spicetifyPkgs.themes.comfy ;
   };
-
-  environment.systemPackages = with pkgs; [
-    icu
-    icu72
-  ];
 }

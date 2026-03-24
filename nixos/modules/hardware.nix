@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   hardware = {
@@ -31,5 +31,17 @@
     nvidia.open = true;
 
     steam-hardware.enable = true;
+  };
+
+  # bluetooth fix (i honestly have no idea why it refuses to work)
+  systemd.services.unblock-bluetooth = {
+    description = "Unblock Bluetooth on startup";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "bluetooth.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.util-linux}/bin/rfkill unblock bluetooth";
+      RemainAfterExit = true;
+    };
   };
 }

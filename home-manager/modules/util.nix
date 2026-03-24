@@ -20,7 +20,7 @@
     appimage-run
     gnome-calculator
     nautilus
-    feh
+    # feh
     eog
     piper
 
@@ -38,6 +38,9 @@
 
     usbutils
     xdg-desktop-portal-hyprland
+
+    transmission_4-gtk
+    coppwr
   ];
 
 }
