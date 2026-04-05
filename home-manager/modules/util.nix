@@ -10,7 +10,6 @@
     quickshell
 
     # obscure stuff i don't know much about
-    lenovo-legion
     # pinentry # required for gpg signing i think
     kdePackages.qtdeclarative # for qmlls
     gnome-disk-utility
@@ -41,6 +40,8 @@
 
     transmission_4-gtk
     coppwr
+
+    imagemagick
   ];
 
 }

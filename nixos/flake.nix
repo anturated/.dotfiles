@@ -3,7 +3,8 @@
 
   inputs = {
     # Use `nix flake update` to update the flake to the latest revision of the chosen release channel.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";

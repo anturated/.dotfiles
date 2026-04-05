@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     bottles
     ftb-app
-    sc-controller
     (prismlauncher.override {
         # Add binary required by some mod
         additionalPrograms = [ ffmpeg ];

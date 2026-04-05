@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   hardware = {
@@ -22,16 +22,43 @@
   	  };
     };
 
-    # dongle driver
-    xone.enable = true;
+    nvidia = {
+      # sleep fix
+      powerManagement.enable = true;
+      # power saving?
+      powerManagement.finegrained = true;
 
-    # sleep fix
-    nvidia.powerManagement.enable = true;
-    nvidia.modesetting.enable = true;
-    nvidia.open = true;
+      # driver version
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      open = true;
+
+      # required by wayland... and everything else
+      modesetting.enable = true;
+    };
+
+    # hardware acceleration stuff (should be enabled by the driver but eh)
+    graphics.enable = true;
+    graphics.enable32Bit = true;
 
     steam-hardware.enable = true;
   };
+
+  # udev rules to symlink cards and avoid random switches
+  services.udev.extraRules = ''
+    # AMD iGPU
+    KERNEL=="card*", \
+    KERNELS=="0000:06:00.0", \
+    SUBSYSTEM=="drm", \
+    SUBSYSTEMS=="pci", \
+    SYMLINK+="dri/amd-igpu"
+
+    # NVIDIA dGPU
+    KERNEL=="card*", \
+    KERNELS=="0000:01:00.0", \
+    SUBSYSTEM=="drm", \
+    SUBSYSTEMS=="pci", \
+    SYMLINK+="dri/nvidia-dgpu"
+  '';
 
   # bluetooth fix (i honestly have no idea why it refuses to work)
   systemd.services.unblock-bluetooth = {

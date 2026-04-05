@@ -12,6 +12,7 @@
     ./modules/code.nix
     ./modules/util.nix
     ./modules/gaming.nix
+    ./modules/themes.nix
     # ./modules/mpd.nix
   ];
 

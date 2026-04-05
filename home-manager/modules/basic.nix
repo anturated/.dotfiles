@@ -3,7 +3,7 @@
 {
   home.packages = [
     pkgs.vivaldi
-    # pkgs.telegram-desktop
+    pkgs.telegram-desktop
     pkgs.vesktop
     pkgs.anytype
     pkgs.kdePackages.dolphin

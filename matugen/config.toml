@@ -5,12 +5,12 @@ argumants = ['hyprpaper', 'reload', 'eDP-1,{{image}}']
 
 [templates.fishy]
 input_path = './templates/fishy.json'
-output_path = '~/.config/fishy/colors.json'
+output_path = '~/.config/ivy-shell/colors.json'
 
 [templates.fish]
 input_path = './templates/fishy-theme.fish'
 output_path = '~/.config/fish/fishy-matugen.fish'
-post_hook = "fish ~/.config/fish/fishy-matugen.fish"
+post_hook = "fish ~/.config/fish/fishy-matugen.fish &"
 
 [templates.kitty]
 input_path = './templates/kitty-axenide.conf'
@@ -40,7 +40,7 @@ output_path = '~/.config/yazi/theme.toml'
 [templates.gtk3]
 input_path = './templates/gtk.css'
 output_path = '~/.config/gtk-3.0/colors.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark'
+post_hook = "(sh -c 'gsettings set org.gnome.desktop.interface gtk-theme \"\"; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark') &"
 
 [templates.gtk4]
 input_path = './templates/gtk.css'
@@ -63,7 +63,7 @@ output_path = '../nixos/modules/spicetify-comfy.nix'
 [templates.cava]
 input_path = './templates/cava'
 output_path = '~/.config/cava/config'
-post_hook = 'killall -SIGUSR1 cava'
+post_hook = 'killall -SIGUSR1 cava &'
 
 [templates.btop]
 input_path = './templates/btop.theme'
@@ -76,6 +76,12 @@ output_path = '~/.config/wofi/colors.css'
 [templates.rofi]
 input_path = './templates/rofi.rasi'
 output_path = '~/.config/rofi/colors.rasi'
+
+
+[templates.nvim]
+input_path = './templates/nvim-catpp.lua'
+output_path = '~/.config/nvim/lua/catppuccin-mat-setup.lua'
+post_hook = 'killall -SIGUSR1 nvim &'
 
 # [templates.zed]
 # input_path = './templates/zed-catppuccin.json'
