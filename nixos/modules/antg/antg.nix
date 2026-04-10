@@ -1,9 +1,13 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./antd.nix ];
+
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "antg" ''
       #!/usr/bin/env bash
+
+      MY_PID=$$
 
       # defaults
       USE_HYPR=0
@@ -11,10 +15,11 @@
       USE_GAMEMODE=0
       USE_GAMEMODE_DAEMON=0
       USE_MANGOHUD=0
+      USE_POWER=0
 
       # check flags
       FLAGS_SET=0
-      while getopts ":hogGm" opt; do
+      while getopts ":hogGmp" opt; do
         FLAGS_SET=1
         case $opt in
           h) USE_HYPR=1 ;;
@@ -22,6 +27,7 @@
           g) USE_GAMEMODE=1 ;;
           G) USE_GAMEMODE_DAEMON=1 ;;
           m) USE_MANGOHUD=1 ;;
+          p) USE_POWER=1 ;;
           *) ;;
         esac
       done
@@ -32,6 +38,8 @@
         USE_HYPR=1
         USE_OFFLOAD=1
         USE_GAMEMODE=1
+        USE_POWER=1
+        USE_MANGOHUD=1
       fi
 
       # cleanup trap
@@ -39,6 +47,12 @@
       cleanup() {
         if [ -n "$GM_PID" ]; then
           kill "$GM_PID" 2>/dev/null || true
+        fi
+        if [ $USE_POWER -eq 1 ]; then
+          dbus-send --system --print-reply \
+                    --dest=com.anturated.antd \
+                    /com/anturated/antd com.anturated.antd.UnregisterClient \
+                    int32:$MY_PID
         fi
         if [ $USE_HYPR -eq 1 ]; then
           ${pkgs.hyprland}/bin/hyprctl reload
@@ -51,6 +65,14 @@
         ${pkgs.hyprland}/bin/hyprctl keyword animations:enabled 0
         ${pkgs.hyprland}/bin/hyprctl keyword decoration:blur:enabled 0
         ${pkgs.hyprland}/bin/hyprctl keyword render:direct_scanout 1
+      fi
+
+      # apply power profiles
+      if [ $USE_POWER -eq 1 ]; then
+        dbus-send --system --print-reply \
+                  --dest=com.anturated.antd \
+                  /com/anturated/antd com.anturated.antd.RegisterClient \
+                  int32:$MY_PID
       fi
 
       # pop a gamemode daemon (nightreign stare)
