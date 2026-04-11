@@ -10,37 +10,50 @@
       MY_PID=$$
 
       # defaults
-      USE_HYPR=0
-      USE_OFFLOAD=0
-      USE_GAMEMODE=0
+      USE_HYPR=1
+      USE_OFFLOAD=1
+      USE_GAMEMODE=1
       USE_GAMEMODE_DAEMON=0
-      USE_MANGOHUD=0
-      USE_POWER=0
+      USE_MANGOHUD=1
+      USE_POWER=1
 
       # check flags
-      FLAGS_SET=0
-      while getopts ":hogGmp" opt; do
+      while getopts ":mgGnCHOMP" opt; do
         FLAGS_SET=1
         case $opt in
-          h) USE_HYPR=1 ;;
-          o) USE_OFFLOAD=1 ;;
-          g) USE_GAMEMODE=1 ;;
-          G) USE_GAMEMODE_DAEMON=1 ;;
-          m) USE_MANGOHUD=1 ;;
-          p) USE_POWER=1 ;;
+          m) # minimal
+            USE_HYPR=0
+            USE_MANGOHUD=0
+            USE_POWER=0
+            ;;
+          g) # gamemode daemon
+            USE_GAMEMODE=0
+            USE_GAMEMODE_DAEMON=1
+            ;;
+          G) # gamemode both
+            USE_GAMEMODE=1
+            USE_GAMEMODE_DAEMON=1
+            ;;
+          n) # no gamemode
+            USE_GAMEMODE=0
+            USE_GAMEMODE_DAEMON=0
+            ;;
+          c) # customize
+            USE_HYPR=0
+            USE_OFFLOAD=0
+            USE_GAMEMODE=0
+            USE_GAMEMODE_DAEMON=0
+            USE_MANGOHUD=0
+            USE_POWER=0
+          ;;
+          H) USE_HYPR=1 ;;
+          O) USE_OFFLOAD=1 ;;
+          M) USE_MANGOHUD=1 ;;
+          P) USE_POWER=1 ;;
           *) ;;
         esac
       done
       shift $((OPTIND -1))
-
-      # if no flags apply defaults
-      if [ $FLAGS_SET -eq 0 ]; then
-        USE_HYPR=1
-        USE_OFFLOAD=1
-        USE_GAMEMODE=1
-        USE_POWER=1
-        USE_MANGOHUD=1
-      fi
 
       # cleanup trap
       GM_PID=""
