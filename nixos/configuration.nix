@@ -15,7 +15,7 @@
     # personal/optional
     ./modules/gaming.nix
     ./modules/prime.nix
-    ./modules/antg/kale.nix
+    ./modules/kale/kale.nix
     ./modules/spicetify-comfy.nix
     # ./modules/legion.nix
     ./modules/faster-boot.nix
