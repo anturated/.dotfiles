@@ -62,8 +62,8 @@ output_path = '../nixos/modules/spicetify-comfy.nix'
 
 [templates.cava]
 input_path = './templates/cava'
-output_path = '~/.config/cava/config'
-post_hook = 'killall -SIGUSR1 cava &'
+output_path = '~/.config/cava/themes/ivy'
+post_hook = 'killall -SIGUSR2 cava &'
 
 [templates.btop]
 input_path = './templates/btop.theme'
