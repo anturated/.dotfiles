@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./antd.nix ];
+  imports = [ ./kaled.nix ];
 
   environment.systemPackages = [
-    (pkgs.writeShellScriptBin "antg" ''
+    (pkgs.writeShellScriptBin "kale" ''
       #!/usr/bin/env bash
 
       MY_PID=$$
