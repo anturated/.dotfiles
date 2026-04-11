@@ -5,15 +5,38 @@
     "separator": ": "
   },
 
+  // "logo": {
+  //   "type": "small",
+  //   "padding": {
+  //     "top": 1,
+  //     "left": 3,
+  //     "right": 3
+  //   },
+  //   "color": {
+  //     "1": "white",
+  //     "3": "white",
+  //     "5": "white"
+  //   }
+  //
+  //   // "color": {
+  //   //   "1": "red",
+  //   //   "2": "green",
+  //   //   "3": "yellow",
+  //   //   "4": "blue",
+  //   //   "5": "magenta",
+  //   //   "6": "cyan"
+  //   // }
+  // },
+
   "logo": {
-    "type": "small",
+    "type": "kitty",
+    "source": "~/.config/fastfetch/huesoska.png",
+    "width": 14,
+    "height": 7,
     "padding": {
-      "top": 1,
+      "top": 0,
       "left": 3,
       "right": 3
-    },
-    "color": {
-      "1": "white"
     }
   },
 
