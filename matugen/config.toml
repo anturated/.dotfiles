@@ -68,6 +68,7 @@ post_hook = 'killall -SIGUSR2 cava &'
 [templates.btop]
 input_path = './templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'killall -SIGUSR2 btop &'
 
 [templates.wofi]
 input_path = './templates/wofi-colors.css'
@@ -77,6 +78,13 @@ output_path = '~/.config/wofi/colors.css'
 input_path = './templates/rofi.rasi'
 output_path = '~/.config/rofi/colors.rasi'
 
+[templates.prismlauncher]
+input_path = './templates/prismlauncher.json'
+output_path = '~/.local/share/PrismLauncher/themes/Matugen/theme.json'
+
+# [templates.vivaldi]
+# input_path = './templates/vivaldi.css'
+# output_path = '~/.config/vivaldi/customcss/vivaldi.css'
 
 [templates.nvim]
 input_path = './templates/nvim-catpp.lua'
