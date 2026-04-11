@@ -17,5 +17,7 @@
         zulu
       ];
     })
+
+    mangohud
   ];
 }

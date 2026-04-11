@@ -42,6 +42,7 @@
     coppwr
 
     imagemagick
+    anydesk
   ];
 
 }
