@@ -11,20 +11,25 @@
     awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 
-  outputs = { nixpkgs, nixos-hardware, spicetify-nix, awww, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs =
+    {
+      nixpkgs,
+      nixos-hardware,
+      spicetify-nix,
+      awww,
+      ...
+    }:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 
-      modules = [ 
-        ./configuration.nix 
+        modules = [
+          ./configuration.nix
 
-        {
-          environment.systemPackages = [ awww.packages.x86_64-linux.default ];
-        }
-        nixos-hardware.nixosModules.lenovo-legion-15arh05h
-        spicetify-nix.nixosModules.default
-        { _module.args.spicetifyPkgs = spicetify-nix.legacyPackages.x86_64-linux; }
-      ];
+          { environment.systemPackages = [ awww.packages.x86_64-linux.default ]; }
+          nixos-hardware.nixosModules.lenovo-legion-15arh05h
+          spicetify-nix.nixosModules.default
+          { _module.args.spicetifyPkgs = spicetify-nix.legacyPackages.x86_64-linux; }
+        ];
+      };
     };
-  };
 }
-
