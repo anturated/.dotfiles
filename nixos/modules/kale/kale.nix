@@ -16,16 +16,24 @@
       USE_GAMEMODE_DAEMON=0
       USE_MANGOHUD=1
       USE_POWER=1
+      USE_PROTON_WAYLAND=1
+      USE_PROTON_LOG=0
+      USE_STEAMDECK=0
 
       # check flags
-      while getopts ":mgGnCHOMP" opt; do
+      while getopts ":mgGnCHOMPlsx" opt; do
         FLAGS_SET=1
         case $opt in
           m) # minimal
             USE_HYPR=0
             USE_MANGOHUD=0
             USE_POWER=0
+            USE_PROTON_WAYLAND=0
             ;;
+          # env vars
+          x) USE_PROTON_WAYLAND=0 ;;
+          l) PROTON_LOG=1 ;;
+          s) USE_STEAMDECK=1 ;;
           g) # gamemode daemon
             USE_GAMEMODE=0
             USE_GAMEMODE_DAEMON=1
@@ -94,19 +102,40 @@
         GM_PID=$!
       fi
 
-      # assemble
+      # assemble #
       CMD=("$@")
+      ENV_VARS=()
+
+      # proton / steam env
+      [ $USE_PROTON_WAYLAND -eq 1 ] && ENV_VARS+=("PROTON_ENABLE_WAYLAND=1")
+      [ $USE_PROTON_LOG -eq 1 ] && ENV_VARS+=("PROTON_LOG=1")
+      [ $USE_STEAMDECK -eq 1 ] && ENV_VARS+=("SteamDeck=1")
+
+      # nvidia offload
       if [ $USE_OFFLOAD -eq 1 ]; then
-        CMD=(env __NV_PRIME_RENDER_OFFLOAD=1 __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only "''${CMD[@]}")
+        ENV_VARS+=(
+          "__NV_PRIME_RENDER_OFFLOAD=1"
+          "__NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0"
+          "__GLX_VENDOR_LIBRARY_NAME=nvidia"
+          "__VK_LAYER_NV_optimus=NVIDIA_only"
+        )
       fi
+
+      # apply env in one go
+      if [ ''${#ENV_VARS[@]} -gt 0 ]; then
+        CMD=(env "''${ENV_VARS[@]}" "''${CMD[@]}")
+      fi
+
+      # wrappers (order matters!)
       if [ $USE_MANGOHUD -eq 1 ]; then
         CMD=(${pkgs.mangohud}/bin/mangohud "''${CMD[@]}")
       fi
+
       if [ $USE_GAMEMODE -eq 1 ]; then
         CMD=(${pkgs.gamemode}/bin/gamemoderun "''${CMD[@]}")
       fi
 
-      # run
+      # run #
       "''${CMD[@]}"
       exit $?
     '')
