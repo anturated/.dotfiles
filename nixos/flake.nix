@@ -9,6 +9,7 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+    kale.url = "path:/home/desant/Documents/projects/kale";
   };
 
   outputs =
@@ -17,6 +18,7 @@
       nixos-hardware,
       spicetify-nix,
       awww,
+      kale,
       ...
     }:
     {
@@ -29,6 +31,7 @@
           nixos-hardware.nixosModules.lenovo-legion-15arh05h
           spicetify-nix.nixosModules.default
           { _module.args.spicetifyPkgs = spicetify-nix.legacyPackages.x86_64-linux; }
+          kale.nixosModules.default
         ];
       };
     };
