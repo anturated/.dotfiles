@@ -63,8 +63,8 @@
         fi
         if [ $USE_POWER -eq 1 ]; then
           dbus-send --system --print-reply \
-                    --dest=com.anturated.antd \
-                    /com/anturated/antd com.anturated.antd.UnregisterClient \
+                    --dest=com.anturated.kaled \
+                    /com/anturated/kaled com.anturated.kaled.UnregisterClient \
                     int32:$MY_PID
         fi
         if [ $USE_HYPR -eq 1 ]; then
@@ -83,8 +83,8 @@
       # apply power profiles
       if [ $USE_POWER -eq 1 ]; then
         dbus-send --system --print-reply \
-                  --dest=com.anturated.antd \
-                  /com/anturated/antd com.anturated.antd.RegisterClient \
+                  --dest=com.anturated.kaled \
+                  /com/anturated/kaled com.anturated.kaled.RegisterClient \
                   int32:$MY_PID
       fi
 
