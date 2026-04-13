@@ -12,7 +12,8 @@
     ./modules/code.nix
     ./modules/util.nix
     ./modules/gaming.nix
-    ./modules/mpd.nix
+    ./modules/themes.nix
+    # ./modules/mpd.nix
   ];
 
   home.stateVersion = "25.05";

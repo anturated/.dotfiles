@@ -1,8 +1,26 @@
 { pkgs, ... }:
 
 {
+  # for widgets likely
   services.upower.enable = true;
   services.udisks2.enable = true;
+  # services.power-profiles-daemon.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      # When plugged in or forced via 'tlp ac'
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      # When on battery (This kills the lag!)
+      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil"; 
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+
+      # Legion specific: Keep the brick cool when not gaming
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+    };
+  };
 
   # need this for gpg signing
   programs.gnupg.agent = {
@@ -10,29 +28,13 @@
     pinentryPackage = pkgs.pinentry-qt;
   };
 
-  services.openvpn.servers = {
-    ukraineVPN = {
-      config = '' config /home/desant/Downloads/uaVPN.ovpn '';
-      autoStart = false;
-    }; 
-  };
-
+  # keyring
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
+  # file structure normalifyer
   programs.nix-ld.enable = true;
-  # services.udev.extraRules = ''
-  #   # 8BitDo Ultimate 2 Dongle
-  #   KERNEL=="hidraw*", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="310a", MODE="066" 
-  #
-  #   # 8BitDo Ultimate 2 BT
-  #   KERNEL=="hidraw*", KERNELS=="*2DC8:310B*", MODE="0660", TAG+="uaccess"
-  #
-  #   # Force xpad driver for 8BitDo Ultimate 2C (2.4 GHz dongle)
-  #   ACTION=="add", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="310a", \
-  #     RUN+="/sbin/modprobe xpad", \
-  #     RUN+="/bin/sh -c 'echo 2dc8 310a > /sys/bus/usb/drivers/xpad/new_id'"
-  # '';
 
-  # services.input-remapper.enable = true;
+  # mouse settings
+  services.ratbagd.enable = true;
 }

@@ -10,7 +10,6 @@
     quickshell
 
     # obscure stuff i don't know much about
-    lenovo-legion
     # pinentry # required for gpg signing i think
     kdePackages.qtdeclarative # for qmlls
     gnome-disk-utility
@@ -20,7 +19,9 @@
     appimage-run
     gnome-calculator
     nautilus
-    feh
+    # feh
+    eog
+    piper
 
     # for prime testing
     kdePackages.kate
@@ -36,7 +37,12 @@
 
     usbutils
     xdg-desktop-portal-hyprland
+
+    transmission_4-gtk
+    coppwr
+
+    imagemagick
+    anydesk
   ];
 
-  # services.kdeconnect.enable=true;
 }

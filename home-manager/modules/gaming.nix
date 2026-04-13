@@ -3,21 +3,21 @@
 {
   home.packages = with pkgs; [
     bottles
-    # pkgs.atlauncher
     ftb-app
-    # pkgs.jdk8
     (prismlauncher.override {
-        # Add binary required by some mod
-        additionalPrograms = [ ffmpeg ];
+      # Add binary required by some mod
+      additionalPrograms = [ ffmpeg ];
 
-        # Change Java runtimes available to Prism Launcher
-        jdks = [
-          # graalvm-ce
-          graalvmPackages.graalvm-ce
-          zulu8
-          zulu17
-          zulu
-        ];
-      })
+      # Change Java runtimes available to Prism Launcher
+      jdks = [
+        # graalvm-ce
+        graalvmPackages.graalvm-ce
+        zulu8
+        zulu17
+        zulu
+      ];
+    })
+
+    mangohud
   ];
 }

@@ -34,6 +34,7 @@ alias vpnon="systemctl start openvpn-ukraineVPN.service"
 alias vpnoff="systemctl stop openvpn-ukraineVPN.service"
 alias refreshwifi="nmcli device wifi rescan"
 alias ff="fastfetch"
+# alias sleep-timer="echo  Sleep in 2 hour && brightnessctl -d nvidia_0 -q s 0% && sleep 3600 && systemctl suspend"
 alias sleep-timer="echo  Sleep in 1 hour && brightnessctl -d amdgpu_bl1 -q s 0% && sleep 3600 && systemctl suspend"
 
 starship init fish | source

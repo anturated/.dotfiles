@@ -13,7 +13,7 @@ find_keyword = { fg = "{{colors.error.default.hex}}", bold = true, italic = true
 find_position = { fg = "{{colors.error.default.hex}}", bold = true, italic = true }
 
 # Marker
-marker_copied = { fg = "{{colors.tertiary_fixed.default.hex | auto_lightness: 20.0}}", bg = "{{colors.tertiary_fixed.default.hex | auto_lightness: 20.0}}" }
+marker_copied = { fg = "{{colors.tertiary_fixed.default.hex}}", bg = "{{colors.tertiary_fixed.default.hex}}" }
 marker_cut = { fg = "{{colors.tertiary_fixed.default.hex}}", bg = "{{colors.tertiary_fixed.default.hex}}" }
 marker_marked = { fg = "{{colors.error.default.hex}}", bg = "{{colors.error.default.hex}}" }
 marker_selected = { fg = "{{colors.tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}" }
@@ -56,11 +56,11 @@ progress_normal = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.surfac
 progress_error = { fg = "{{colors.error.default.hex}}", bg = "{{colors.surface_bright.default.hex}}" }
 
 # Permissions
-permissions_t = { fg = "{{colors.secondary.default.hex | auto_lightness: 30.0}}" }
-permissions_w = { fg = "{{colors.tertiary.default.hex | auto_lightness: 30.0}}" }
-permissions_x = { fg = "{{colors.error.default.hex | auto_lightness: 30.0}}" }
-permissions_r = { fg = "{{colors.tertiary_fixed.default.hex | auto_lightness: 30.0}}" }
-permissions_s = { fg = "{{colors.primary_fixed.default.hex | auto_lightness: 30.0}}" }
+permissions_t = { fg = "{{colors.secondary.default.hex}}" }
+permissions_w = { fg = "{{colors.tertiary.default.hex}}" }
+permissions_x = { fg = "{{colors.error.default.hex}}" }
+permissions_r = { fg = "{{colors.tertiary_fixed.default.hex}}" }
+permissions_s = { fg = "{{colors.primary_fixed.default.hex}}" }
 
 # : ]]]
 

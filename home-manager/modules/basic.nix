@@ -10,7 +10,5 @@
     pkgs.libreoffice
     pkgs.olympus
     pkgs.tradingview
-
-    # pkgs.spotify
   ];
 }
