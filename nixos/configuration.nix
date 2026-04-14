@@ -26,7 +26,10 @@
   # enable spyware
   nixpkgs.config.allowUnfree = true;
   # very dangerous bleeding edge stuff here
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -76,7 +79,7 @@
     ];
 
     # i have ONE ntfs partition and it needs to go
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
 
     # time to choose derivation
     # (0 still lets you press ESC)

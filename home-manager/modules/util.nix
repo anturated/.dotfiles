@@ -29,8 +29,6 @@
 
     # video
     vlc
-    gpu-screen-recorder-gtk
-    gpu-screen-recorder
     losslesscut-bin
 
     okteta
