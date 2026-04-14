@@ -1,11 +1,30 @@
-### TODO:
-- [ ] statusline (heirline?)
-- [ ] buffer line 
+## TODO:
+### Plugins
+- [ ] treesitter
 - [ ] autopairs
 - [ ] indent guides
+
+- [ ] statusline (heirline?)
+- [ ] buffer line 
 - [ ] mason config
-- [ ] lsp
-- [ ] treesitter
 - [ ] dap?
 - [ ] lazygit thing
+- [x] lsp
+
+### Config
+- [ ] theme auto transparent bg
+- [ ] lsp keys
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
 - [ ] 

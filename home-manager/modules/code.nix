@@ -9,15 +9,19 @@
     # python3
     #
     # omnisharp-roslyn
+    nil
+    pyright
   ];
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (ps: with ps; [
-      pkgs.dotnet-sdk_9
-      pkgs.dotnet-runtime_9
-      pkgs.omnisharp-roslyn
-    ]);
+    package = pkgs.vscode.fhsWithPackages (
+      ps: with ps; [
+        pkgs.dotnet-sdk_9
+        pkgs.dotnet-runtime_9
+        pkgs.omnisharp-roslyn
+      ]
+    );
   };
 
   programs = {
